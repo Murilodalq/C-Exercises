@@ -5,6 +5,6 @@ main(){
 		int num;
 	printf("Digite o numero:\n");
 	scanf("%d", &num);
-	num = num + 1;
+	num++;
 	printf("o sucessor e %d\n", num);
 }
