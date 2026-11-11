@@ -19,9 +19,11 @@ void menu(){
 	printf("3 - Listar\n");
 	printf("4 - Remover\n");
 	printf("5 - Sair do Sistema\n");
+	printf("Digite a opção que deseja executar:\n");
 }
 
 void cadastro(){
+	setlocale(LC_ALL, "Portuguese");
 	if (prox > 100){
 		printf("Cadastro cheio!\n");
 		
@@ -39,22 +41,24 @@ void cadastro(){
 }
 
 void consulta(){
+	setlocale(LC_ALL, "Portuguese");
 	int pesquisa;
 	printf("Digite o código do produto:\n");
 	scanf("%d", &pesquisa);
-	if (pesquisa <= codigoAtual-1){		
+	for (int i=0; i < prox-1; i++){
+	if (pesquisa == produtos[i].codigo){		
 		printf("=====Produto=====\n");
-		printf("Código: %d\n", produtos[pesquisa-1].codigo);
-		printf("Nome: %s\n", produtos[pesquisa-1].nome);
-		printf("Valor: %.2f\n", produtos[pesquisa-1].valor);
+		printf("Código: %d\n", produtos[i].codigo);
+		printf("Nome: %s\n", produtos[i].nome);
+		printf("Valor: %.2f\n", produtos[i].valor);
 		printf("=================\n\n");
-	} else {
-		printf("Produto não encontrado / não cadastrado\n");
+	}
 	}
 	system("pause");
 }
 
 void lista(){
+	setlocale(LC_ALL, "Portuguese");
 	for (int i=0; i < prox-1; i++){
 		printf("=====Produto=====\n");
 		printf("Código: %d\n", produtos[i].codigo);
@@ -66,17 +70,19 @@ void lista(){
 }
 
 void remove(){
+	setlocale(LC_ALL, "Portuguese");
 	int codProdRem, op;
 
 	printf("Digite o código do produto que deseja remover:\n");
 	scanf("%d", &codProdRem);
-	if (codProdRem <= codigoAtual-1){		
+	for (int i=0; i < prox-1; i++){
+	if (codProdRem == produtos[i].codigo){		
 		printf("=====Produto=====\n");
-		printf("Código: %d\n", produtos[codProdRem-1].codigo);
-		printf("Nome: %s\n", produtos[codProdRem-1].nome);
-		printf("Valor: R$%.2f\n", produtos[codProdRem-1].valor);
+		printf("Código: %d\n", produtos[i].codigo);
+		printf("Nome: %s\n", produtos[i].nome);
+		printf("Valor: R$%.2f\n", produtos[i].valor);
 		printf("=================\n\n");
-		printf("Deseja realmente remover este produto?:\n");
+		printf("Deseja realmente remover este produto?\n1. Sim\n2. Não\n");
 		scanf("%d", &op);
 		switch (op){
 			case 1:
@@ -93,8 +99,7 @@ void remove(){
 				printf("Digite uma opção válida da próxima vez!\n");
 				break;
 		}
-	} else {
-		printf("Produto não encontrado / não cadastrado\n");
+	} 	
 	}
 	system("pause");
 }
