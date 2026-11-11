@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
-//caguei aqui
+
 struct tp_produto{
 	int codigo;
 	char nome[100];
